@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        max-width: 800px;
+        margin: 30px auto;
+        border-radius: 4px;
+        box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.3);
+        padding: 16px;
+      }
+
+      .carousel {
+        position: relative;
+      }
+
+      .carousel .panels > a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 200px;
+      }
+
+      .carousel .panels > :nth-child(even) {
+        background-color: lightskyblue;
+      }
+
+      .carousel .panels > :nth-child(odd) {
+        background-color: lightpink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Carousel</h2>
+      <div class="carousel">
+        <div class="panels">
+          <a href="#1"></a>
+          <a href="#2"></a>
+          <a href="#3"></a>
+          <a href="#4"></a>
+        </div>
+        <div class="arrows">
+          <button class="arrow arrow-left"></button>
+          <button class="arrow arrow-right"></button>
+        </div>
+        <ul class="indicator">
+          <li class="active"></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
