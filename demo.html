@@ -137,5 +137,34 @@
         </ul>
       </div>
     </div>
+
+    <script>
+      const $ = ($) => document.querySelector($);
+      const $$ = ($) => document.querySelectorAll($);
+
+      const $left = $(".carousel .arrow-left");
+      const $right = $(".carousel .arrow-right");
+      const $$indicators = $$(".carousel .indicators > li");
+
+      const getIndex = () => $$indicators.indexOf($(".carousel .indicator .active"));
+      const getLeftIndex = () => xxx;
+      const getRightIndex = () => yyy;
+      const setPage = (index) => {};
+      const setIndicator = (index) => {};
+
+      $left.onclick = function () {
+        let index = getLeftIndex();
+        setPage(index);
+        setIndicator(index);
+      };
+
+      $right.onclick = function () {
+        let index = getRightIndex();
+        setPage(index);
+        setIndicator(index);
+      };
+
+      $$indicators.forEach($indicator=>$indicator.onclick=funciton(){})
+    </script>
   </body>
 </html>
