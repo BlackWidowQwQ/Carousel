@@ -26,6 +26,14 @@
         width: 100%;
         height: 100%;
         text-decoration: none;
+        opacity: 0;
+        z-index: 0;
+        transition: all 0.3s;
+      }
+
+      .carousel .panels > a.active {
+        opacity: 1;
+        z-index: 1;
       }
 
       .carousel .panels > :nth-child(even) {
@@ -39,6 +47,7 @@
       .carousel .arrows .arrow {
         position: absolute;
         top: 50%;
+        z-index: 100;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -88,6 +97,7 @@
 
       .carousel .indicators {
         position: absolute;
+        z-index: 100;
         left: 50%;
         bottom: 10px;
         transform: translateX(-50%);
@@ -108,6 +118,7 @@
         width: 30px;
         height: 2px;
         background: #c0c4cc;
+        transition: all 0.3s;
       }
 
       .carousel .indicators > li.active::before {
@@ -120,10 +131,10 @@
       <h2>Carousel</h2>
       <div class="carousel">
         <div class="panels">
+          <a class="active" href="#0">0</a>
           <a href="#1">1</a>
           <a href="#2">2</a>
           <a href="#3">3</a>
-          <a href="#4">4</a>
         </div>
         <div class="arrows">
           <button class="arrow arrow-left"></button>
@@ -145,12 +156,21 @@
       const $left = $(".carousel .arrow-left");
       const $right = $(".carousel .arrow-right");
       const $$indicators = $$(".carousel .indicators > li");
+      const $$panels = $$(".carousel .panels > a");
 
-      const getIndex = () => $$indicators.indexOf($(".carousel .indicator .active"));
-      const getLeftIndex = () => xxx;
-      const getRightIndex = () => yyy;
-      const setPage = (index) => {};
-      const setIndicator = (index) => {};
+      const getIndex = () =>
+        [...$$indicators].indexOf($(".carousel .indicators .active"));
+      const getLeftIndex = () =>
+        (getIndex() - 1 + $$indicators.length) % $$indicators.length;
+      const getRightIndex = () => (getIndex() + 1) % $$indicators.length;
+      const setPage = (index) => {
+        $$panels.forEach(($panel) => $panel.classList.remove("active"));
+        $$panels[index].classList.add("active");
+      };
+      const setIndicator = (index) => {
+        $$indicators.forEach(($panel) => $panel.classList.remove("active"));
+        $$indicators[index].classList.add("active");
+      };
 
       $left.onclick = function () {
         let index = getLeftIndex();
@@ -164,7 +184,15 @@
         setIndicator(index);
       };
 
-      $$indicators.forEach($indicator=>$indicator.onclick=funciton(){})
+      $$indicators.forEach(
+        ($indicator) =>
+          ($indicator.onclick = function (e) {
+            let index = [...$$indicators].indexOf(e.target);
+            console.log(index);
+            setPage(index);
+            setIndicator(index);
+          })
+      );
     </script>
   </body>
 </html>
