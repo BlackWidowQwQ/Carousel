@@ -188,7 +188,6 @@
         ($indicator) =>
           ($indicator.onclick = function (e) {
             let index = [...$$indicators].indexOf(e.target);
-            console.log(index);
             setPage(index);
             setIndicator(index);
           })
