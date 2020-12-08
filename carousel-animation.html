@@ -328,7 +328,7 @@
       }
 
       let $carousel = document.querySelector(".carousel");
-      let carousel = new Carousel($carousel, Animation.zoom);
+      let carousel = new Carousel($carousel, Animation.slide);
       document.querySelector("#animation-select").onchange = function () {
         carousel.setAnimation(Animation[this.value]);
       };
